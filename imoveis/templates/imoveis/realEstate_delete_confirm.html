@@ -1,0 +1,22 @@
+{% block deleteImoveis %}
+<div class="col-lg-12" style="margin-top:20px;">
+    <div class="card">
+        <div class="card-body">
+            <div class="listagemGeral">
+                <hr>
+                <h5 style="margin-left:10%;">Tem certeza que deseja excluir este imovel ?</h5>
+                <br>
+                <h5 style="margin-left:10%;">endereço: {{Imoveis.endereco}}</h5>
+                <hr>
+                <form method="POST" enctype="multipart/form-data" action="/imoveis/delete/{{Imoveis.id}}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{% url 'voltar' %}" class="btn btn-info">Voltar</a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}Atualizar Morador{% endblock %}
+
+{% block sistema %}
+
+{% block menu %}
+{% include 'home/menu.html' %}
+{% endblock %}
+<div class="page">
+    <!-- navbar-->
+    {% block header %}
+    {% include 'home/header.html' %}
+    {% endblock %}
+    <!-- Counts Section -->
+    <div class="col-lg-12" style="margin-top:20px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="listagemGeral">
+                    <hr>
+                    <h3 style="margin-left:47%;">Morador</h3>
+                    <hr>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-12">
+                                {% csrf_token %}
+
+                                <div class="form-group">
+                                    <label class="control-label  " for="id_nome">Nome</label>
+                                    <div class=" ">
+                                        <input type="text" name="nome" maxlength="200" class=" form-control"
+                                               required id="id_nome" value="{{cliente.nome}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label  " for="id_identidade">Identidade</label>
+                                    <div class=" ">
+                                        <input type="text" name="identidade" maxlength="15"
+                                               onkeypress="$(this).mask('00.000.000-0');"
+                                               class=" form-control" required id="id_identidade"
+                                               value="{{cliente.identidade}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label  " for="id_cpf">CPF</label>
+                                    <div class=" ">
+                                        <input type="text" name="cpf" maxlength="11" class=" form-control"
+                                               onkeypress="$(this).mask('000.000.000-00');"
+                                               required id="id_cpf" value="{{cliente.cpf}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label  " for="id_natural">Natural</label>
+                                    <div class=" ">
+                                        <input type="text" name="natural" maxlength="30"
+                                               class=" form-control" required id="id_natural"
+                                               value="{{cliente.natural}}">
+                                    </div>
+                                </div>
+                                {{ form.estadocivil|bootstrap }}
+                                <div class="form-group">
+                                    <label class="control-label  " for="id_profissao">Profissao</label>
+                                    <div class=" ">
+                                        <input type="text" name="profissao" maxlength="30"
+                                               class=" form-control" required id="id_profissao"
+                                               value="{{cliente.profissao}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label  " for="id_email">Email</label>
+                                    <div class=" ">
+                                        <input type="text" name="email" maxlength="50" class=" form-control"
+                                               required id="id_email" value="{{cliente.email}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label  " for="id_telefone">Telefone</label>
+                                    <div class=" ">
+                                        <input type="text" name="telefone" maxlength="11"
+                                               onkeypress="$(this).mask('(00) 00000-0000')"
+                                               class=" form-control" required id="id_telefone"
+                                               value="{{cliente.telefone}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block footer %}
+    {% include 'home/footer.html' %}
+    {% endblock %}
+</div>
+{% endblock %}
+
+
